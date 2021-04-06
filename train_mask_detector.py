@@ -67,7 +67,7 @@ model = Model(inputs=baseModel.input, outputs=headModel)
 
 for layer in baseModel.layers:
 	layer.trainable = False
-l
+
 print("[INFO] compiling model...")
 opt = Adam(lr=INIT_LR, decay=INIT_LR / EPOCHS)
 model.compile(loss="binary_crossentropy", optimizer=opt,
@@ -82,22 +82,16 @@ H = model.fit(
 	validation_steps=len(xtest) // BS,
 	epochs=EPOCHS)
 
-# make predictions on the testing set
 print("[INFO] evaluating network...")
 predIdxs = model.predict(xtest, batch_size=BS)
 
-# for each image in the testing set we need to find the index of the
-# label with corresponding largest predicted probability
 predIdxs = np.argmax(predIdxs, axis=1)
 
-# show a nicely formatted classification report
 print(classification_report(ytest.argmax(axis=1), predIdxs, target_names=lb.classes_))
 
-# serialize the model to disk
 print("[INFO] saving mask detector model...")
 model.save("mask_detector.model", save_format="h5")
 
-# plot the training loss and accuracy
 N = EPOCHS
 plt.style.use("ggplot")
 plt.figure()
