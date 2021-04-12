@@ -72,8 +72,6 @@ print("[INFO] compiling model...")
 opt = Adam(lr=INIT_LR, decay=INIT_LR / EPOCHS)
 model.compile(loss="binary_crossentropy", optimizer=opt,
 	metrics=["accuracy"])
-
-
 print("[INFO] training head...")
 H = model.fit(
 	aug.flow(xtrain, ytrain, batch_size=BS),
