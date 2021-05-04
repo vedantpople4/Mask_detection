@@ -1,5 +1,5 @@
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.applications.vgg16 import VGG16
+from tensorflow.keras.applications.xception import Xception
 from tensorflow.keras.layers import AveragePooling2D
 from tensorflow.keras.layers import Dropout
 from tensorflow.keras.layers import Flatten
@@ -52,7 +52,7 @@ labels = np.array(labels)
 
 aug = ImageDataGenerator(rotation_range = 20, zoom_range = 0.15, width_shift_range= 0.2, height_shift_range=0.2, shear_range=0.15, horizontal_flip=True, fill_mode="nearest")
 
-baseModel = VGG16(weights="imagenet", include_top=False,
+baseModel = Xception(weights="imagenet", include_top=False,
 	input_tensor=Input(shape=(224, 224, 3)))
 
 
