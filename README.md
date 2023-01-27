@@ -11,3 +11,6 @@ This project is made in 2 phases
 4. To Run detection Model <code>python run detect_mask_video.py</code>
 5. To End the stream, use <code> Ctrl+c or q</code>
 This Face Mask Detection Model works on Real Time Video streams. 
+
+Update:-
+1. This project is now published as a research paper at [ECS transactions](https://iopscience.iop.org/article/10.1149/10701.8275ecst)
